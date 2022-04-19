@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>View Customers</title>
+
+  <!-- Googlefont -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;900&family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS style sheet -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- fontawesome -->
+  <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js" charset="utf-8"></script>
+
+  <!-- bootstrap script -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</head>
+
+<body style="background: #4c4c4c;">
+
+  <!-- title section -->
+  <section style="height: 200px; background-color: #090093;" id="title">
+    <div style="height: 100px;" class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-dark" style="padding :0">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item" style="margin: 0 -167px;">
+              <a class="nav-link" style="font-size: x-large; margin-right: 60px ;" href="index.html"><img src="home.png" width="140px" height="120px" alt=""> Home</a>
+            </li>
+          </ul>
+        </div>
+        <a class="navbar-brand" style=" width: 100%;" href="index.html">
+          <h1 class="navbar-heading" style="margin: 28px 308px; text-decoration: underline; font-size: xxx-large;">OUR CUSTOMERS</h1>
+        </a>
+      </nav>
+    </div>
+    <div class="my-info text-center" style=" background-color: #090093; height: 125px; width: 600px; border-radius: 78%; margin: auto;">
+      <button style=" margin: 47px; padding: 6px 36px;" class="btn btn-outline-light" data-toggle="modal" data-target="#sendMoney">Send Money</button>
+      <a class="btn btn-outline-light" href="history.html" data-toggle="modal" data-target="#transactionHistory">See All Transactions</a>
+    </div>
+
+  </section>
+
+
+  <section id="main" style="margin: 82px;" class="coloured-section">
+
+    <!--Modal Send Money-->
+    <div style="background: transparent;" class="modal fade" id="sendMoney" tableindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" style="border-radius: 60px ;" role="document">
+        <div class="modal-content" style="border-radius: 60px ; background-color: #4c4c4c;">
+          <div class="modal-header">
+            <h5 class="modal-title" style="color: white;" id="exampleModalLabel">Transfer Money</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="">
+              <div class="input-group mb-3">
+                <input type="text" id="enterSName" class="form-control" placeholder="Sender's Username" aria-label="Sender's Username" aria-describedby="basic-addon2">
+
+              </div>
+              <div class="input-group mb-3">
+                <input type="text" id="enterName" class="form-control" placeholder="Recipient's Username" aria-label="Recipient's Username" aria-describedby="basic-addon2">
+
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">₹</span>
+                </div>
+                <input type="text" id="enterAmount" class="form-control" placeholder="Enter Amount" aria-label="Amount">
+                <div class="input-group-append">
+                  <span class="input-group-text">.00</span>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" onclick="sendMoney()" class="btn btn-success" data-dismiss="modal">Send Money</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Modal Transaction History-->
+    <div class="modal fade" id="transactionHistory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" style="background-color: #4c4c4c;" role="document">
+        <div class="modal-content " style="background-color: #4c4c4c;">
+          <div class="modal-header">
+            <h5 class="modal-title" style="color: white;" id="exampleModalLabel">Transaction History</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" style="color: white; margin-bottom: 10px;">
+            <ol id="transaction-history-body" style=" font-size: small; text-decoration-color: white;  margin-bottom: 10px ;">
+              
+            </ol>
+            <br><br>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Table-->
+    <div class="container">
+      <div class="table-responsive" style="text-decoration: aliceblue; background: darkslategrey; border: 20px solid ghostwhite; border-radius: 30px;">
+        <table class="table table-hover table-bordered" style="color: white;">
+          <thead style="text-decoration-color: white ;">
+            <tr>
+              <th scope="col">S. No.</th>
+              <th scope="col">UserName</th>
+              <th scope="col">E-Mail</th>
+              <th scope="col">Bank Balance</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr>
+              <td scope="row">1</td>
+              <td>akhil</td>
+              <td>akhil@gmail.com</td>
+              <td>
+                <p id="akhilBankBalance">80200</p>
+              </td>
+            </tr>
+
+            <tr>
+              <td scope="row">2</td>
+              <td>aditya</td>
+              <td>aditya@email.com</td>
+              <td>
+                <p id="adityaBankBalance">61000</p>
+              </td>
+            </tr>
+
+            <tr>
+              <td scope="row">3</td>
+              <td>ayush</td>
+              <td>ayush@gmail.com</td>
+              <td>
+                <p id="ayushBankBalance">45700</p>
+              </td>
+            </tr>
+
+            <tr>
+              <td scope="row">4</td>
+              <td>karan</td>
+              <td>karan@gmail.com</td>
+              <td>
+                <p id="karanBankBalance">85080</p>
+              </td>
+            </tr>
+
+            <tr>
+              <td scope="row">5</td>
+              <td>rajiv</td>
+              <td>rajiv@gmail.com</td>
+              <td>
+                <p id="rajivBankBalance">25200</p>
+              </td>
+            </tr>
+
+            <tr>
+              <td scope="row">6</td>
+              <td>ajay</td>
+              <td>ajay@gmail.com</td>
+              <td>
+                <p id="ajayBankBalance">68000</p>
+              </td>
+            </tr>
+
+            <tr>
+              <td scope="row">7</td>
+              <td>vishal</td>
+              <td>vishal@gmail.com</td>
+              <td>
+                <p id="vishalBankBalance">41000</p>
+              </td>
+            </tr>
+
+            <tr>
+              <td scope="row">8</td>
+              <td>aviral</td>
+              <td>aviral@gmail.com</td>
+              <td>
+                <p id="aviralBankBalance">36700</p>
+              </td>
+            </tr>
+
+            <tr>
+              <td scope="row">9</td>
+              <td>soni</td>
+              <td>soni@gmail.com</td>
+              <td>
+                <p id="soniBankBalance">40700</p>
+              </td>
+            </tr>
+
+            <tr>
+              <td scope="row">10</td>
+              <td>akshay</td>
+              <td>akshay@gmail.com</td>
+              <td>
+                <p id="akshayBankBalance">25000</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </section>
+  <script src="script.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"></script>
+  <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"></script>
+</body>
+</html>6
