@@ -4,9 +4,10 @@ function sendMoney(){
     var enterSName = document.getElementById("enterSName").value;
     var findSenderBankAccount = enterSName + "BankBalance";
     var enterSAmount = parseInt(document.getElementById(findSenderBankAccount).innerHTML);
-    if (enterAmount > enterSAmount){
+    if (enterAmount > enterSAmount || enterAmount<0){
         alert("Insufficient Balance!")
     }
+    
     else{
         var findUserBankAccount = enterName + "BankBalance";
         var finalAmount = parseInt(document.getElementById(findUserBankAccount).innerHTML) + enterAmount;
